@@ -1,0 +1,73 @@
+.c-layer {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-bottom: 0.5px solid grey;
+}
+
+.c-label {
+    width: 80%;
+    height: 60px;
+    float: left;
+    border-top: dashed 1px #888;
+    border-left: dashed 1px #888;
+    border-bottom: dashed 1px #888;
+    border-radius: 5px 0 0 5px;
+    background-color: #eee;
+    cursor: pointer;
+}
+
+.c-label:hover {
+    background-color: #fff8dc;
+}
+.c-box {
+    width: 15%;
+    height: 60px;
+    border: solid 1px #aaa;
+    border-radius: 5px;
+    display: inline-block;
+    position: relative;
+}
+
+.c-bar {
+    width: auto;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border: 1px solid white;
+    border-radius: 5px 5px 5px 5px;
+}
+
+.c-title {
+    font-size: 16px;
+    font-style: bold;
+    color: black;
+    margin: 7px 0 3px 0;
+    text-align: center;
+}
+.c-text {
+    font-size: 12px;
+    color: #666;
+    margin: 3px 0;
+    text-align:center;
+}
+.c-note {
+    font-size: 10px;
+    color: #aaa;
+    margin: 3px 0;
+    text-align: center;
+}
+.c-normal {
+    background-color: #32cd32;
+}
+.c-warning {
+    background-color: #ffa500;
+}
+.c-danger {
+    background-color: #ff6347;
+}
+.c-none {
+    background-color: #aaa;
+}

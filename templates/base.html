@@ -1,0 +1,176 @@
+<!doctype html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<title>{% block title %} {% endblock %}</title>
+
+	<link rel="shortcut icon" href="static/favicon.ico" type="image/x-icon" />
+
+	<link rel="stylesheet" href="/static/Endless-1.5.1/bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" href="/static/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/static/Endless-1.5.1/css/pace.css">
+	<link rel="stylesheet" href="/static/Endless-1.5.1/css/colorbox/colorbox.css">
+	<link rel="stylesheet" href="/static/Endless-1.5.1/css/jquery.dataTables_themeroller.css">
+	<link rel="stylesheet" href="/static/TableTools-2.2.4/css/dataTables.tableTools.css">
+	<link rel="stylesheet" href="/static/Endless-1.5.1/css/datepicker.css">
+	<link rel="stylesheet" href="/static/Endless-1.5.1/css/endless.css">
+	<link rel="stylesheet" href="/static/Endless-1.5.1/css/endless-skin.css">
+	<link rel="stylesheet" href="/static/chosen_v1.5.1/chosen.css">
+	<link rel="stylesheet" href="/static/css/main.css">
+
+	<script type="text/javascript" src="/static/Endless-1.5.1/js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="/static/Endless-1.5.1/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/static/Endless-1.5.1/js/uncompressed/pace.js"></script>
+	<script type="text/javascript" src="/static/Endless-1.5.1/js/jquery.popupoverlay.min.js"></script>
+	<script type="text/javascript" src="/static/Endless-1.5.1/js/jquery.slimscroll.min.js"></script>
+	<script type="text/javascript" src="/static/Endless-1.5.1/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="/static/TableTools-2.2.4/js/dataTables.tableTools.min.js"></script>
+	<script type="text/javascript" src="/static/Endless-1.5.1/js/uncompressed/bootstrap-datepicker.js"></script>
+	<script type="text/javascript" src="/static/Endless-1.5.1/js/locale/bootstrap-datepicker.zh-CN.js" charset="UTF-8"></script>
+	<script type="text/javascript" src="/static/Endless-1.5.1/js/modernizr.min.js"></script>
+	<script type="text/javascript" src="/static/Endless-1.5.1/js/jquery.cookie.min.js"></script>
+	<script type="text/javascript" src="/static/chosen_v1.5.1/chosen.jquery.min.js"></script>
+	<script type="text/javascript" src="/static/Endless-1.5.1/js/endless/endless.js"></script>
+	<style type="text/css">
+		body { font-family: "Microsoft YaHei",  sans-serif, monospace; }
+		.pointer {
+			cursor: pointer;
+			-webkit-touch-callout: none;
+    		-webkit-user-select: none;
+    		-khtml-user-select: none;
+    		-moz-user-select: none;
+    		-ms-user-select: none;
+			user-select: none;
+		}
+		.glink {
+			color: #b8860b; font-weight: bold;
+		}
+		.gdisabled {
+			pointer-events: none;
+			cursor: default;
+		}
+}
+	</style>
+</head>
+<body>
+	<!-- 采用 endless admin 前端框架构建  -->
+	<!-- Main Wrapper -->
+    <div id="wrapper">
+<!-- Top Navigation -->
+    <div id="top-nav" class="fixed skin-1">
+			<div class="brand"><a href="/"><img alt="Brand" src="/static/img/ccb-logo.png" style="height: 23px;"></a> 设备容量可视化 </div>
+			<button type="button" class="navbar-toggle pull-left hide-menu" id="menuToggle">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<ul class="nav-notification clearfix">
+				<li class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown"><i class='fa fa-user fa-lg'></i> {{user}} <i class="fa fa-angle-down fa-lg"></i></a>
+					<ul class="dropdown-menu task dropdown-1" style="width: 60px;">
+						<li> <a class="clearfix" href="#">修改密码 <i class="fa fa-pencil"></i></a>
+						<li> <a class="clearfix" href="#">退出 <i class="fa fa-sign-out"></i></a>
+					</ul>
+				</li>
+				<li class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown">
+					<i class="fa fa-question-circle fa-lg"></i>
+					</a>
+					<ul class="dropdown-menu task dropdown-2" style="width: 60px;">
+						<li> <a class="clearfix" href="#" data-toggle="modal" data-target="#modal-help-about">关于</a></li>
+						<!-- <li> <a class="clearfix" href="/static/html/help/help.html" target="_blank">使用说明</a></li> -->
+					</ul>
+				</li>
+			</ul>
+    </div>
+    <!-- End of Top Navigation -->
+
+    <!-- Sidebar Menu -->
+    <aside class="skin-1">
+    	<div class="main-menu">
+		    <ul>
+		    	<!-- 开始分析，两级菜单 -->
+			    <li class="openable">
+			    	<a href="#">
+						<span class="menu-icon"> <i class="fa fa-search"></i> </span>
+						<span class="text">解析</span>
+						<span class="menu-hover"></span>
+					</a>
+					<ul class="submenu">
+						<li> <a href="/upload/n7k"> <span class="submenu-label">N7K</span></a></li>
+					</ul>
+					<ul class="submenu">
+						<li> <a href="/upload/n5k"> <span class="submenu-label">N5K</span></a></li>
+					</ul>
+				</li>
+
+		    	<!-- 开始分析，两级菜单
+			    <li class="openable">
+			    	<a href="#">
+						<span class="menu-icon"> <i class="fa fa-cube"></i> </span>
+						<span class="text">设备</span>
+						<span class="menu-hover"></span>
+					</a>
+					<ul class="submenu">
+						<li> <a href="/dev/n7k"> <span class="submenu-label">N7K</span><span class="submenu-hover"></span></a></li>
+					</ul>
+					<ul class="submenu">
+						<li> <a href="/dev/n5k"> <span class="submenu-label">N5K</span> </a> </li>
+					</ul>
+				</li>-->
+
+			    <!-- 网络
+			    <li class="menu">
+				    <a href="#">
+					    <span class="menu-icon"> <i class="fa fa-random"></i> </span>
+					    <span class="text"> 网络 </span>
+					    <span class="menu-hover"></span>
+				    </a>
+			    </li>-->
+
+		    </ul>
+    </div>
+    </aside>
+    <!-- End of Sidebar Menu -->
+
+    <!-- Main Container -->
+    <div id="main-container">
+		<div class="padding-md">
+		<div class="panel panel-default">
+		{% block main %}{% endblock %}
+		</div>
+		</div>
+	</div>
+    <!-- End of Main Container -->
+
+    <!-- Footer -->
+    <footer>
+    </footer> <!-- End of Footer -->
+
+</div> <!-- End of Main Wrapper -->
+
+    <!--Modal-->
+		<div class="modal fade" id="modal-help-about">
+  			<div class="modal-dialog modal-sm">
+    			<div class="modal-content">
+      				<div class="modal-header">
+        				<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4>关于 SCP</h4>
+      				</div>
+				    <div class="modal-body">
+				        <p>广发银行自动化配置平台</p>
+			        	<br>
+			        	<p> 目前系统刚刚上线，不免会有很多错误和不方便的地方
+			        	<p> 请使用中及时反馈。感谢！
+			        	<p>
+			        	<p class="pull-right">v1.0 广发银行 2016</p>
+			        	<br>
+				    </div>
+				    <div class="modal-footer">
+				        <button class="btn btn-sm btn-success" data-dismiss="modal">关闭</button>
+				    </div>
+			  	</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+
+</body>

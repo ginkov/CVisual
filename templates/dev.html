@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}{{devname|upper}}容量可视化{% endblock %}
+
+{% block main %}
+
+<div class="panel-heading">
+    <span style="font-size: 16px;">{{devname|upper}} 容量视图</span>
+    <span class="pull-right"><btn class="btn btn-default" onclick="$('#mdUnknownCommands').modal('show')">未识别的命令</btn></span>
+</div>
+
+{% import "macros/section.html" as ms %}
+{% import "macros/details.html" as md %}
+{% import "macros/unknown_commands.html" as muc %}
+
+<div class="panel-body">
+    {% for section in cc %}
+    <div class="row">
+        <div class="col-md-1"><div class="c-title">{{section.name}}</div></div>
+        <div class="col-md-10 c-layer">
+            {{ ms.section(section["ci_list"]) }}
+        </div>
+    </div>
+    {% endfor %}
+</div><!-- /.panel-body -->
+
+<div class="panel-footer" id="divUc">
+</div><!-- /.panel-footer -->
+
+<!-- modal and scripts for detail display -->
+{% for section in cc %}
+    {% for i in section.ci_list %}
+        {{ md.detail(i) }}
+    {% endfor %}
+{% endfor %}
+
+{{ muc.unknown_commands(unknown) }}
+
+<script>
+function showModal(id) {
+    $("#md"+id).modal('show');
+    var fn = window['ft'+id];
+    if (typeof fn === "function") fn();
+}
+</script>
+
+{% endblock %}

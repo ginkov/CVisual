@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}上传容量脚本结果{% endblock %}
+
+{% block main %}
+<form action = "/parse/{{model}}" method = "POST" enctype= "multipart/form-data">
+    <div class="panel-heading">
+        <span style="font-size: 16px;"> 上传容量脚本结果 </span>
+    </div>
+
+    <div class="panel-body">
+        <div class="form-group">
+            <div class="upload-file" style="width:300px;">
+                <input name="file" type="file" id="upload-demo" class="upload-demo">
+                <label data-title="选择文件" for="upload-demo">
+                    <span data-title="请选择 show 命令的输出结果 ..."></span>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel-footer">
+        <input style="width: 120px;" type="submit" class="btn btn-success" value="上传"/>
+    </div>
+</form>
+
+<script>
+$().ready(function(){
+});
+</script>
+{% endblock %}

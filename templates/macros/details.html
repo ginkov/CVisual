@@ -1,0 +1,54 @@
+{% macro detail(ci) -%}
+
+    <div class="modal fade" id="md{{ci.id}}" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+            <h4 class="modal-title">{{ci.name}}</h4>
+          </div>
+
+          <div class="modal-body">
+              {% if ci.detail %}
+                <div class="row">
+                {% for k in ci.detail %}
+                    <div class="col-md-2 col-md-offset-1" style="text-align: right;">{{k}}:</div>
+                    <div class="col-md-8 col-md-offset-1">{{ci.detail[k]}}</div>
+                {% endfor %}
+                </div>
+              {% endif %}
+
+              {% if ci.table %}
+              <table class="table table-condensed" id="tbl{{ci.id}}"></table>
+              {% endif %}
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success" data-dismiss="modal" style="width: 80px;">关闭</button>
+          </div>
+
+        </div><!-- ./modal-content -->
+      </div><!-- ./modal-dialog -->
+    </div><!-- ./modal -->
+
+    {% if ci.table %}
+    <script>
+        function ft{{ci.id}}() {
+            if ($("#tbl{{ci.id}}").hasClass("initialized")) {
+            }
+            else {
+                $("#tbl{{ci.id}}").addClass("initialized").DataTable({
+                    "data": {{ci.table.data | safe}},
+                    "lengthChange": false,
+                    "searching": false,
+                    "bJQueryUI": true,
+                    "sPaginationType": "full_numbers",
+                    "columns": {{ci.table.column | to_json | safe}}
+                });
+            }
+        }
+    </script>
+    {% endif %}
+
+{%- endmacro %}

@@ -1,0 +1,29 @@
+{% macro unknown_commands(uc) -%}
+
+<div class="modal fade" id="mdUnknownCommands" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+            <h4 class="modal-title">未知命令列表</h4>
+        </div>
+
+        <div class="modal-body">
+            {% if uc %}
+            {% for u in uc %}
+            <div class="alert alert-info">{{u}}</div>
+            {% endfor %}
+            {% else %}
+            <p style="font-size: 14px; margin: 5px 10px;"><i class="fa fa-smile-o fa-lg"></i> 太好啦! 没有不能识别的命令</p>
+            {% endif %}
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-success" data-dismiss="modal" style="width: 80px;">关闭</button>
+        </div>
+    </div><!-- ./modal-content -->
+  </div><!-- ./modal-dialog -->
+</div><!-- ./modal -->
+
+{%- endmacro %}

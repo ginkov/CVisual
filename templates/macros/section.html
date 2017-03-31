@@ -1,0 +1,42 @@
+{% macro section(items) -%}
+
+    {% set row = [] %}
+
+    {% for i in items %}
+
+        {% if row|length == 4 %}
+            <div class="row">
+            {% for r in row %} {{ print_item(r) }} {% endfor %}
+            </div>
+            {% do row.pop() %} {% do row.pop() %} {% do row.pop() %} {% do row.pop() %}
+        {% endif %}
+
+        {% do row.append(i) %}
+
+    {% endfor %}
+
+    {% if row|length > 0 %}
+        <div class="row">
+        {% for r in row %} {{ print_item(r) }} {% endfor %}
+        </div>
+    {% endif %}
+
+{% endmacro %}
+
+
+{% macro print_item(r) %}
+
+    <div class="col-md-3" onclick="showModal('{{r.id}}')" style="margin: 3px 0 7px 0;">
+        <div class="c-label">
+            <div class="c-title"><i class="fa {{r.icon|default_icon}}"></i> {{r.name}}</div>
+            <div class="c-text">
+                总计: {{r.total}} {{r.unit}}
+                已用: {{r.used}}  {{r.unit}}
+            </div>
+        </div>
+        <div class="c-box">
+            <div class="c-bar c-{{r.stat}}" style="height: {{r.rate.used * 0.6}}px;"></div>
+        </div>
+    </div>
+
+{% endmacro %}
